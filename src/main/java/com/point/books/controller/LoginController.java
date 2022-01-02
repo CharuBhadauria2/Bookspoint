@@ -29,13 +29,18 @@ public class LoginController {
 	@Autowired
 	LoginService service;
 	
-	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String loginMessagedefault(ModelMap model)
+	{
+		return "Login";
+	}
 	
 	@RequestMapping(value="/Login", method=RequestMethod.GET)
 	public String loginMessage(ModelMap model)
 	{
 		return "Login";
 	}
+	//TODO: URL remains logout after we logout. change it to login
 	@RequestMapping(value="/Logout", method=RequestMethod.GET)
 	public String logoutMessage(ModelMap model)
 	{
