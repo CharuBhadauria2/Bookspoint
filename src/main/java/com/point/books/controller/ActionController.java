@@ -26,7 +26,7 @@ public class ActionController {
 		model.put("books",actionservice.retrieveBooks(action));
 		return "Buy";
 	}
-	
+
 	@RequestMapping(value="/Sell", method=RequestMethod.GET)
 	public String getSellPage(ModelMap model)
 	{
