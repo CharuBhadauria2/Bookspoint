@@ -10,6 +10,7 @@ public interface UserRepository extends JpaRepository<UserLogin,Integer> {
 	
 	UserLogin findById(long uid);
 	
+	UserLogin findByPassword(String password);
 	
 
 }

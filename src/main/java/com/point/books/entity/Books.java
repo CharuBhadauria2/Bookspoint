@@ -41,6 +41,8 @@ public class Books {
 	public void setUser(UserLogin user) {
 		this.user = user;
 	}
+	
+	
 
 	public Books(int bookid, String title, String author, String category, int price, String action, UserLogin user) {
 		super();
@@ -52,7 +54,7 @@ public class Books {
 		this.action = action;
 		this.user = user;
 	}
-
+	
 	
 
 	@ManyToOne

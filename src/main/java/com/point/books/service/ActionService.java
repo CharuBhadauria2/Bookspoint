@@ -26,6 +26,9 @@ public class ActionService {
 	BooksRepo br;
 	
 	@Autowired
+	UserRepository ur;
+	
+	@Autowired
 	UserRepository repository;
 	
 	public boolean sellOrLendBook(String title, String author, String category, int price, String action,ModelMap model)
@@ -71,7 +74,36 @@ public class ActionService {
 	}
 	
 	
+	public List<Books> retrieveMyActions(String email)
+	{
+		List<Books> books=new ArrayList<Books>();
+		UserLogin user= ur.findByUsername(email);
+		books=br.findByUser(user);
+		
+	return books;
+		
+	}
+	
+	public void deleteBook(int bookid)
+	{
+		br.deleteById(bookid);
+	}
 	
 	
+	public Books updateBook(int bookid)
+	{
+		Books book= br.findById(bookid);
+		return book;
+		
+	}
+	
+	
+	public void updateBookCommit(Books book,ModelMap model)
+	{	System.out.print("book to be deleted....."+book.getBookid());
+		deleteBook(book.getBookid());
+	
+		sellOrLendBook(book.getTitle(), book.getAuthor(), book.getCategory(), book.getPrice(),book.getAction(),model);
+		
+	}
 
 }

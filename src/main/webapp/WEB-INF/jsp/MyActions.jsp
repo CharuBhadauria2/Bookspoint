@@ -2,14 +2,14 @@
 <%@include file="common/footer.jspf" %>
 
 <table class="table table-striped">
-<caption><h3>Books</h3></caption>
+<caption><h3>My books listed for selling or lending</h3></caption>
 <thead>
 <tr>
 
 <th>Title</th>
 <th>Author</th>
-<th>Category</th>
-<th>Price</th>
+<th>Action</th>
+<th>Price (INR)</th>
 </tr>
 </thead>
 <tbody>
@@ -18,10 +18,10 @@
 <tr>
 <td>${book.title}</td>
 <td>${book.author}</td>
-<td>${book.category}</td>
+<td>${book.action}</td>
 <td>${book.price}</td>
-<td><a type="button" class="btn btn-info" href="/viewDetails?id=${book.bookid}">View Details</a></td>
-<td><a type="button" class="btn btn-success" href="/addToCart?id=${book.bookid}">Add to cart</a></td>
+<td><a type="button" class="btn btn-danger" href="/deleteBook?id=${book.bookid}">Delete</a></td>
+<td><a type="button" class="btn btn-info" href="/updateBook?id=${book.bookid}">Update</a></td>
 </tr>
 </c:forEach>
 

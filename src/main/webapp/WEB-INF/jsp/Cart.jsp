@@ -8,7 +8,7 @@
 
 <th>Title</th>
 <th>Author</th>
-<th>Category</th>
+<th>Action</th>
 <th>Price</th>
 </tr>
 </thead>
@@ -18,10 +18,8 @@
 <tr>
 <td>${book.title}</td>
 <td>${book.author}</td>
-<td>${book.category}</td>
+<td>${book.action}</td>
 <td>${book.price}</td>
-<td><a type="button" class="btn btn-info" href="/viewDetails?id=${book.bookid}">View Details</a></td>
-<td><a type="button" class="btn btn-success" href="/addToCart?id=${book.bookid}">Add to cart</a></td>
 </tr>
 </c:forEach>
 
