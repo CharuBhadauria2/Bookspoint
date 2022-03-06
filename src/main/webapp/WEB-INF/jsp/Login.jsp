@@ -13,11 +13,12 @@
             <h1 class="text-center login-title">Sign In</h1>
             <h4 class="text-center">Welcome to Book Lovers Club</h4>
             <div class="account-wall">
-                <img class="profile-img center-block" src="https://p.kindpng.com/picc/s/114-1145840_green-book-icon-green-book-icon-png-transparent.png" height="200px"
+                <img class="profile-img center-block" src="https://wikiclipart.com/wp-content/uploads/2016/11/Child-reading-children-reading-clipart-black-and-white-2.jpg" height="200px"
                     alt="">
-                <form class="form-signin" method="post">
-                <input name="name" type="text" class="form-control" placeholder="Email" required autofocus>
-                
+                <br>
+                <form class="form-signin" method="post"  onsubmit="return submitForm();" id="myForm">
+                <input name="name" type="email" id="email" class="form-control" placeholder="Email" required autofocus>
+                <br>
                 <input name="password" type="password" class="form-control" placeholder="Password" required>
                 &nbsp;
                 <c:if test="${error!=null}">
@@ -39,5 +40,40 @@
 
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+function validateEmail(){
+   var email = document.getElementById("email").value;
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;   
+	console.log('email matcher..',reg.test(email));
+
+   if (reg.test(email) == false) 
+   {
+       return false;
+   }
+
+   return true;
+
+}
+
+function submitForm(){
+   
+    	if(validateEmail()) {
+    	
+        $('#myForm').submit();
+        
+        return true;
+    	}
+    	else
+    	{
+    		alert('Invalid Email Address');
+            return false;
+    		
+    	}
+}
+       
+
+</script>
 </body>
 </html>

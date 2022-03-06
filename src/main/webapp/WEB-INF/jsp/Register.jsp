@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <html>
 <head>
 <title>Register</title>
@@ -9,7 +9,7 @@
 	    		rel="stylesheet">
 
 <div class="container">
-            <form class="form-horizontal" role="form" method="post">
+            <form class="form-horizontal" role="form" method="post" id="myForm"  onsubmit="return submitForm();">
                <div class="panel panel-info ">
                <div class="panel-heading"><h2>Register</h2></div>
                </div>
@@ -23,14 +23,13 @@
                 <div class="form-group">
                     <label for="phoneno" class="col-sm-3 control-label">Phone Number</label>
                     <div class="col-sm-9">
-                        <input type="number" name="phoneno" placeholder="Phone no" class="form-control" autofocus>
-                        
-                    </div>
+                        <input type="tel" id="phoneno" name="phoneno" placeholder="Phone No" class="form-control" autofocus required>
+                        </div>
                 </div>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" name="email" placeholder="Email" class="form-control">
+                        <input type="email" name="email" id="email" placeholder="Email" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,7 +53,12 @@
                 
                 <c:if test="${errorreg!=null}">
                 
-                <div class="error"><p style="color:red ">Could not register! Please try again</p></div>
+                <div class="error"><p style="color:red ">Could not register! Please try again !</p></div>
+                &nbsp;
+                </c:if>
+          <c:if test="${alreadyexists!=null}">
+                
+                <div class="error"><p style="color:red "> Username or password already taken. please try some other combination ! </p></div>
                 &nbsp;
                 </c:if>
                 <div class="form-group">
@@ -68,5 +72,73 @@
         </div> <!-- ./container -->
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+function mobilenumber() {
+	 var mobile = document.getElementById("phoneno").value;
+	 var numericmob = isNumber(mobile);
+	      if(!numericmob)
+	      {
+	          alert("Phone Number Invalid.");      
+	          return false;
+	      }
+	      if(mobile.length!=10)
+	      {
+	          alert("Enter 10 digits Contact Number.");
+	          return false;
+	      }
+	      return true;
+}
+
+
+function validateEmail(){
+	 var email = document.getElementById("email").value;
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+    
+	console.log('email matcher..',reg.test(email));
+
+    if (reg.test(email) == false) 
+    {
+        return false;
+    }
+
+    return true;
+
+}
+
+function isNumber(mobile)
+{    
+    if(isNaN(mobile)||mobile.indexOf(" ")!=-1)
+    {               
+        return false;
+    }
+    return true;
+}
+
+
+function submitForm(){
+	debugger;
+    if(mobilenumber()){
+    	if(validateEmail()) {
+    	
+        $('#myForm').submit();
+        
+        return true;
+    	}
+    	else
+    	{
+    		alert('Invalid Email Address');
+            return false;
+    		
+    	}
+        }
+        else{
+            alert("Please Input Correct Mobile Number and Email Id");
+            return false;
+        }
+}
+</script>
 </body>
 </html>

@@ -19,8 +19,10 @@
 			<li><a href="/Borrow">Borrow</a></li>
 			<li><a href="/Lend">Lend</a></li>
 			</ul>
-            <ul class="nav navbar-nav navbar-right">
-      <li><a href="/Logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li></ul>
+            <ul class="nav navbar-nav navbar-right">           
+            <li><a href="/Cart"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping Cart</a></li>
+            <li><a href="/MyActions"><span class="glyphicon glyphicon-actions"></span>My Actions</a></li>
+      <li><a href="/Login"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li></ul>
             
 		
 	</div>

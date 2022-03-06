@@ -50,7 +50,6 @@ public class LoginService {
 	public boolean saveUser(String fullname,String phoneno, String email, String password)
 	{
 		
-		
 			UserLogin u=new UserLogin();
 			u.setFullname(fullname);
 			u.setPassword(password);
@@ -74,5 +73,17 @@ public class LoginService {
 		
 		
 	}
+	
+	public boolean checkUserAlreadyExist(String email, String password)
+	{
+		if(repository.findByUsername(email)!=null || repository.findByPassword(password)!=null)
+	 		 return true;
+		
+		return false;
+		
+	}
+	
+	
+	
 
 }
